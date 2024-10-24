@@ -2,19 +2,30 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { globalTheme } from "./styles/globalTheme.ts";
-import { Global } from "@emotion/react";
-import { globalStyle } from "./styles/globalStyle.ts";
+import { ChakraProvider, createSystem, defineConfig } from "@chakra-ui/react";
+import "./styles/font.css";
+
+const chakraConfig = defineConfig({
+  globalCss: {
+    body: {
+      margin: 0,
+      padding: 0,
+      backgroundColor: "#596535",
+      color: "#FCFBDF",
+      fontFamily: "Pretendard-Regular, Roboto, Helvetica, Arial, sans-serif",
+    },
+  },
+  theme: {},
+});
+
+const chakraSystem = createSystem(chakraConfig);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
-      <ThemeProvider theme={globalTheme}>
-        <Global styles={globalStyle}></Global>
-        <CssBaseline />
+    <ChakraProvider value={chakraSystem}>
+      <BrowserRouter>
         <App />
-      </ThemeProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ChakraProvider>
   </StrictMode>
 );
