@@ -13,7 +13,7 @@ export const LandingSection = () => {
             <S.Filter />
             <S.TitleContainer as={motion.div} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 3 }}>
                 <S.Title>ECO X</S.Title>
-                <S.SubTitle>환경과 공간정보를 더하다.</S.SubTitle>
+                <S.SubTitle>공간정보를 모으다.</S.SubTitle>
             </S.TitleContainer>
         </S.TitleSection>
         <S.ContentSection>
